@@ -29,6 +29,5 @@ const int MOD = 0, oo = 0, MX = 0;
 int main(){
     fastIO;
 
-    cout << ran(1, 3) << endl;
 
 }
