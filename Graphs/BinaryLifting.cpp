@@ -45,18 +45,13 @@ int lca(int u, int v){
     }else if(depth[v] > depth[u]){
         v = getUP(v, depth[v], depth[u]);
     }
-    int l = 0, r = depth[v], ans = -1, d = depth[v];
-    while(l <= r){
-        int m = (l + r) / 2;
-        int x = getUP(u, d, m), y = getUP(v, d, m);
-        if(x == y){
-            l = m + 1;
-            ans = x;
-        }else{
-            r = m - 1;
+    int mx = log(depth[u]);
+    for(int i = mx; i >= 0; i--){
+        if(up[u][i] != up[v][i]){
+            u = up[u][i], v = up[v][i];
         }
     }
-    return ans;
+    return up[u][0];
 }
  
 pair<int, int> getUPQ(int u, int s, int value, const int e){
@@ -75,3 +70,6 @@ int query(int u, int v){
     res = op(res, getUPQ(v, depth[v], CMP, depth[m]).ss);
     return res;
 }
+struct Edge{
+    int u, v, w;
+};
