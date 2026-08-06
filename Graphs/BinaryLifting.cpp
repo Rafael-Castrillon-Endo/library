@@ -45,6 +45,9 @@ int lca(int u, int v){
     }else if(depth[v] > depth[u]){
         v = getUP(v, depth[v], depth[u]);
     }
+    if(u == v){
+        return u;
+    } 
     int mx = log(depth[u]);
     for(int i = mx; i >= 0; i--){
         if(up[u][i] != up[v][i]){
