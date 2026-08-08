@@ -18,6 +18,7 @@ void dfs(int u, int p, int d = 0){
 }
  
 int log(int x){
+    if(x == 0) return 0;
     return 31 - __builtin_clz(x);
 }
  
